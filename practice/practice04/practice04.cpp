@@ -26,7 +26,7 @@ int main() {
     std::cin >> choice;
 
     if (choice == 1) {
-        std::cout << "Enter temperature in Celsius: ";
+        std::cout << "Enter temperature: ";
         std::cin >> temperature;
 
         double result = convertTemperature(temperature, 'F');
@@ -34,7 +34,7 @@ int main() {
 
     }
     else if (choice == 2) {
-        std::cout << "Enter temperature in Fahrenheit: ";
+        std::cout << "Enter temperature: ";
         std::cin >> temperature;
 
         double result = convertTemperature(temperature, 'C');

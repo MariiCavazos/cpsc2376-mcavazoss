@@ -1,20 +1,59 @@
-// practice03.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <vector>
+#include <stdexcept>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+class MathUtils {
+public:
+    // Corrected: includes 'end' and handles if start > end
+    static int sumRange(int start, int end) {
+        if (start > end) return 0;
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    // Corrected: fixed loop range and checks for negative numbers
+    static bool containsNegative(const std::vector<int>& numbers) {
+        for (size_t i = 0; i < numbers.size(); i++) {
+            if (numbers[i] < 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Corrected: handles empty list with exception, and avoids out-of-bounds access
+    static int findMax(const std::vector<int>& numbers) {
+        if (numbers.empty()) {
+            throw std::invalid_argument("Empty vector provided to findMax.");
+        }
+
+        int maxVal = numbers[0];
+        for (size_t i = 1; i < numbers.size(); i++) {
+            if (numbers[i] > maxVal) {
+                maxVal = numbers[i];
+            }
+        }
+        return maxVal;
+    }
+};
+
+int main() {
+    std::cout << "Sum from 1 to 5: " << MathUtils::sumRange(1, 5) << std::endl;
+
+    std::vector<int> values = { 3, -1, 5, 7 };
+
+    std::cout << "Contains negative? "
+        << (MathUtils::containsNegative(values) ? "Yes" : "No") << std::endl;
+
+    try {
+        std::cout << "Max value: " << MathUtils::findMax(values) << std::endl;
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

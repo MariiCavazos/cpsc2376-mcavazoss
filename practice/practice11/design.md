@@ -89,7 +89,7 @@ classDiagram
         +Loan(Game* g, Customer* c, string due)
     }
 
-    Loan --> Game : borrows >
-    Loan --> Customer : borrowed by >
+    Loan --> Game : borrows 
+    Loan --> Customer : borrowed by 
 ```
 

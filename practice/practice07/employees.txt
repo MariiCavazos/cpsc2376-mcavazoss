@@ -1,0 +1,3 @@
+Salaried 101 Himothy 5000
+Hourly 102 James 20 160
+Commission 103 Alexander 2000 15000 0.05

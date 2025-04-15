@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="project02.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pacmangame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pacmangame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

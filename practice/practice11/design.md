@@ -30,10 +30,17 @@ class Game {
 public:
     string title;
     string publisher;
-    int totalCopies;
+    int totalCopies;v
     int availableCopies;
     
     Game(string, string, int);
     void checkout();
     void returnCopy();
 };
+
+[Google](https://www.google.com)
+
+```mermaid
+flowchart LR
+A --> B
+B --> C

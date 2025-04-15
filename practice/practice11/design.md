@@ -1,46 +1,95 @@
-# Board Game Lending System Design
+# Program Specification
 
-## 1. Program Specification
+This program is designed to help manage the lending process at a local board game café. It keeps track of all board games in the café's inventory, including the number of available copies. It allows games to be checked out to customers, tracks who has borrowed which games, and records when games are returned. The program provides basic inventory and lending management functionality.
 
-This system is designed to manage board games at a local board game café. The system will track the games in the inventory, who has borrowed them, and when they are due for return. It allows the café owner to:
+Entities involved include games, customers, and lending transactions. The system allows viewing available games, checking out games, and checking them back in.
 
-- See a list of all the games available and how many copies are in stock.
-- Track which customer has borrowed which game.
-- Record when games are returned.
+---
 
-## 2. Key Nouns and Verbs
+## Nouns and Verbs
 
-### Nouns:
-- **Game**: Board games available for borrowing.
-- **Customer**: People who borrow games.
-- **Loan**: The act of borrowing a game.
-- **GameLibrary**: The system that holds all game information.
+### Nouns (likely classes or attributes)
+- Game
+- Customer
+- Loan / LendingRecord
+- Inventory
+- Due Date
 
-### Verbs:
-- **Checkout**: Borrow a game.
-- **Return**: Return a game.
-- **List**: Show available games.
+### Verbs (likely methods or behaviors)
+- Add Game
+- Check Out Game
+- Return Game
+- List Available Games
+- Track Borrowed Games
 
-## 3. Class Design
+---
 
-### Class: `Game`
+## Class Design
 
+### `Game`
 ```cpp
 class Game {
 public:
-    string title;
-    string publisher;
-    int totalCopies;v
+    std::string title;
+    int totalCopies;
     int availableCopies;
-    
-    Game(string, string, int);
-    void checkout();
-    void returnCopy();
-};
 
-[Google](https://www.google.com)
+    Game(std::string t, int total);
+    void updateAvailability(int change);
+};
+```
+
+### `Customer`
+```cpp
+class Customer {
+public:
+    std::string name;
+    int customerId;
+
+    Customer(std::string n, int id);
+};
+```
+
+### `Loan`
+```cpp
+class Loan {
+public:
+    Game* game;
+    Customer* customer;
+    std::string dueDate;
+
+    Loan(Game* g, Customer* c, std::string due);
+};
+```
+
+---
+
+## Mermaid Class Diagram
 
 ```mermaid
-flowchart LR
-A --> B
-B --> C
+classDiagram
+    class Game {
+        +string title
+        +int totalCopies
+        +int availableCopies
+        +Game(string t, int total)
+        +void updateAvailability(int change)
+    }
+
+    class Customer {
+        +string name
+        +int customerId
+        +Customer(string n, int id)
+    }
+
+    class Loan {
+        +Game* game
+        +Customer* customer
+        +string dueDate
+        +Loan(Game* g, Customer* c, string due)
+    }
+
+    Loan --> Game : borrows >
+    Loan --> Customer : borrowed by >
+```
+

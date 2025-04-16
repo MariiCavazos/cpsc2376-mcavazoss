@@ -2,7 +2,7 @@
 #include <string>
 #include "pacmangame.h"
 
-Direction getDirectionInput(const std::string & who) {
+Direction getDirectionInput(const std::string& who) {
     std::string input;
     while (true) {
         std::cout << who << " move (U/D/L/R): ";

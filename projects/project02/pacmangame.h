@@ -20,7 +20,7 @@ class PacmanGame {
 public:
     PacmanGame();
     Status status() const;
-    void play(Direction dir); // Applies to current player
+    void play(Direction dir); 
     void nextTurn();
     friend std::ostream& operator<<(std::ostream& os, const PacmanGame& game);
 

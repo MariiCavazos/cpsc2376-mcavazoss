@@ -5,7 +5,7 @@
 #include <limits>
 
 int main() {
-    std::deque<std::string> textEdits; // Deque to store text edits
+    std::deque<std::string> textEdits; 
     int choice;
 
     while (true) {

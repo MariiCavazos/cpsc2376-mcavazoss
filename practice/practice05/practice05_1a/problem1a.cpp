@@ -20,9 +20,9 @@ int main() {
 
     int value;
     
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         std::cout << "Integer " << (i + 1) << ": ";
-        
+       
         while (!(std::cin >> value)) {
             std::cout << "Invalid input. Please enter an integer: ";
             std::cin.clear();

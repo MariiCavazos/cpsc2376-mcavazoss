@@ -33,9 +33,9 @@ bool askToPlayAgain() {
 
 void printRules() {
     std::cout << "PAC-MAN GRID CHASE RULES:\n";
-    std::cout << "Pac-Man (P) collects all pellets (.) to win.\n";
-    std::cout << "Ghost (G) tries to catch Pac-Man.\n";
-    std::cout << "Players take turns using U, D, L, R to move.\n\n";
+    std::cout << "(PLAYER 1) Pac-Man (P) collects all pellets (.) to win.\n";
+    std::cout << "(PLAYER 2) Ghost (G) tries to catch Pac-Man.\n";
+    std::cout << "Players take turns using U(UP), D(DOWN), L(LEFT), R(RIGHT) to move.\n\n";
 }
 
 int main() {

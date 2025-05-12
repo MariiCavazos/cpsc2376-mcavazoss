@@ -1,34 +1,22 @@
-﻿# Project 04 – Pac-Man Grid Chase
+﻿# Project 04 – Pac-Man Maze Game
 
 ## 🕹️ Description
 
-Pac-Man Grid Chase is a turn-based 2-player grid game written in C++ using SDL2. One player controls Pac-Man who must collect all the pellets on the board, while the other controls the Ghost who tries to catch Pac-Man. The game alternates turns and ends when either all pellets are collected or Pac-Man is caught.
+This is a Pac-Man-inspired maze game written in C++ using SDL2. Navigate Pac-Man through the maze, collect pellets, and avoid ghosts. The game ends when all pellets are collected or Pac-Man is caught by a ghost.
 
 ## 🎮 Controls
 
-- Arrow Keys: Move the current player (Pac-Man or Ghost)
+- Arrow Keys: Move Pac-Man (Up, Down, Left, Right)
 - `R`: Restart the game
-- `Esc`: Quit the game
+- `Esc`: Exit the game
 
 ## 🧪 Screenshot
 
-![Screenshot](screenshot.png)
+![Screenshot](pacmangame.jpg)
 
 ## ✨ Extra Features
 
-- Turn-based logic between Pac-Man and Ghost
-- Grid-based rendering using SDL2
-- Simple game reset with `R` key
-
----
-
-## 🛠️ Build & Run Instructions
-
-### Dependencies
-
-Make sure SDL2 is installed on your system.
-
-For Linux/macOS:
-```bash
-g++ -o pacmangame main.cpp game.cpp -lSDL2
-./pacmangame
+- Dynamic ghost movement with random direction changes
+- Power-ups that grant bonus points
+- Adjustable Pac-Man movement speed
+- A fully customizable maze layout

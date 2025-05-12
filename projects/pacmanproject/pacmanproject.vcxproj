@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{52bab1d2-b508-4c18-874d-59f4ad457852}</ProjectGuid>
-    <RootNamespace>project04</RootNamespace>
+    <ProjectGuid>{6a0b63ba-c388-4c01-bcda-0f4bc4f4bddb}</ProjectGuid>
+    <RootNamespace>pacmanproject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,23 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="game.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md">
-      <SubType>
-      </SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\arial.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="pacmangame.jpg" />
+    <ClCompile Include="pacmanproject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

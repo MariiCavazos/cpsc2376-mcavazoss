@@ -1,35 +1,66 @@
-#pragma once
-#define SDL_MAIN_HANDLED
+#ifndef GAME_H
+#define GAME_H
+
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <string>
 #include <vector>
 
-const int GRID_SIZE = 10;
-const int CELL_SIZE = 64;
+// Constants for the maze
+const int MAZE_ROWS = 20;
+const int MAZE_COLS = 20;
+const int CELL_SIZE = 30; // Each cell is 30x30 pixels
 
-enum Entity { EMPTY, PACMAN, GHOST, PELLET };
+// Enum for maze elements
+enum MazeElement { EMPTY, WALL, PELLET, POWER_UP };
+
+// Directions for movement
 enum Direction { UP, DOWN, LEFT, RIGHT };
-enum Status { ONGOING, PACMAN_WINS, GHOST_WINS };
-
-struct Position {
-    int row;
-    int col;
-};
 
 class Game {
 public:
-    Game();
-    void play(Direction dir);
-    void draw(SDL_Renderer* renderer);
-    Status status() const;
+    Game(SDL_Renderer* renderer);
+    ~Game();
+
+    void run(); // Main game loop
+    void restartGame(); // Restart the game
+    void draw(SDL_Renderer* renderer); // Render the game state
+    void setPacmanDirection(Direction direction); // Set Pac-Man's direction
+    void update(); // Update the game state
 
 private:
-    std::vector<std::vector<Entity>> board;
-    Position pacman;
-    Position ghost;
-    bool isPacmanTurn;
-    Status gameStatus;
+    SDL_Renderer* renderer;
+    TTF_Font* font;
 
-    Position move(Position current, Direction dir) const;
-    bool isValid(Position pos) const;
-    void updateBoard(Position& playerPos, Entity playerType, Direction dir);
+    // Game state
+    bool gameOver;
+    bool gameWon;
+    int score;
+
+    // Maze and player
+    MazeElement maze[MAZE_ROWS][MAZE_COLS]; // 2D array for the maze
+    int pacmanRow, pacmanCol; // Pac-Man's position
+    Direction pacmanDirection; // Pac-Man's current direction
+
+    // Ghosts
+    struct Ghost {
+        int row, col;
+        Direction direction;
+    };
+    std::vector<Ghost> ghosts;
+
+    // Movement control
+    Uint32 lastMoveTime; // Time of the last movement
+    Uint32 moveDelay;    // Delay between movements in milliseconds
+
+    // Helper methods
+    void loadMaze(); // Load the maze layout
+    void movePacman(); // Move Pac-Man
+    void moveGhosts(); // Move ghosts
+    bool checkCollision(int row, int col); // Check collision with walls
+    void checkPellet(); // Check if Pac-Man eats a pellet or power-up
+    void checkWinLoss(); // Check win/loss conditions
+    void renderText(const std::string& message, int x, int y);
 };
+
+#endif
